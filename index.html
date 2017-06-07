@@ -121,26 +121,48 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
 
 
     if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('topContacts').style.backgroundColor = '#000000';
+      document.getElementById('topContacts').style.backgroundColor = '#FFFFFF';
     }
     if(document.getElementsByTagName('h1').length === 0) {
-      document.getElementById('header').style.display = 'none';
+      document.getElementById('header').style.backgroundColor = '#FFFFFF';
     }
     if(document.getElementsByClassName('work-entry').length === 0) {
-      document.getElementById('workExperience').style.display = 'none';
+      document.getElementById('workExperience').style.backgroundColor = '#FFFFFF';
     }
     if(document.getElementsByClassName('project-entry').length === 0) {
-      document.getElementById('projects').style.display = 'none';
+      document.getElementById('projects').style.backgroundColor = '#5588FF';
     }
     if(document.getElementsByClassName('education-entry').length === 0) {
-      document.getElementById('education').style.display = 'none';
+      document.getElementById('education').style.backgroundColor = '#33FF33';
     }
     if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('lets-connect').style.display = 'none';
+      document.getElementById('lets-connect').style.backgroundColor = '#000000';
     }
     if(document.getElementById('map') === null) {
-      document.getElementById('mapDiv').style.display = 'none';
+      document.getElementById('mapDiv').style.backgroundColor = '#FF00FF';
     }
+
+
+    if(skills != null){
+      $("#header").append(HTMLskillsStart);
+      $("#skills").append(HTMLskills.replace('%data%',skills.languages[0].name));
+      $("#skills").append(HTMLskills.replace('%data%',skills.languages[1].name));
+      $("#skills").append(HTMLskills.replace('%data%',skills.languages[2].name));
+    }
+
+    for(index in work){
+      $("#workExperience").append(HTMLworkStart);
+      $(".work-entry:last").append(HTMLworkEmployer.replace('%data%',work[index].company) + HTMLworkTitle.replace('%data%',work[index].position));
+      if(work[index].end_date === ""){
+        $(".work-entry:last").append(HTMLworkDates.replace('%data%', work[index].start_date));
+      }
+      else{
+        $(".work-entry:last").append(HTMLworkDates.replace('%data%', work[index].start_date + " - " + work[index].end_date));
+      }
+      $(".work-entry:last").append(HTMLworkDescription.replace('%data%',"I developed robotics software, working on projects for banks and other big companies. Also I got certifications for the Blueprism tool and C#."));
+    }
+
+
   </script>
 </body>
 </html>

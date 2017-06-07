@@ -45,10 +45,15 @@ var skills = {
 };
 
 
-var work = {};
-work.position = "Software developer";
-work.company = "ViewNext";
-work.years_worked = "0";
+var work = [
+	{
+		"position" : "Software developer",
+		"company" : "ViewNext",
+		"years_worked" : 0,
+		"start_date" : "June 2017",
+		"end_date" : ""
+	}
+];
 
 var education = [
 	{
@@ -96,6 +101,8 @@ var project = [
 
 $("#main").append(work.position);
 $("#main").append(education.last_school);
+
+
 
 
 
