@@ -130,7 +130,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       document.getElementById('workExperience').style.backgroundColor = '#FFFFFF';
     }
     if(document.getElementsByClassName('project-entry').length === 0) {
-      document.getElementById('projects').style.backgroundColor = '#5588FF';
+      document.getElementById('projects').style.backgroundColor = '#FFFFFF';
     }
     if(document.getElementsByClassName('education-entry').length === 0) {
       document.getElementById('education').style.backgroundColor = '#33FF33';
@@ -150,19 +150,21 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       $("#skills").append(HTMLskills.replace('%data%',skills.languages[2].name));
     }
 
-    for(index in work){
-      $("#workExperience").append(HTMLworkStart);
-      $(".work-entry:last").append(HTMLworkEmployer.replace('%data%',work[index].company) + HTMLworkTitle.replace('%data%',work[index].position));
-      if(work[index].end_date === ""){
-        $(".work-entry:last").append(HTMLworkDates.replace('%data%', work[index].start_date));
-      }
-      else{
-        $(".work-entry:last").append(HTMLworkDates.replace('%data%', work[index].start_date + " - " + work[index].end_date));
-      }
-      $(".work-entry:last").append(HTMLworkDescription.replace('%data%',"I developed robotics software, working on projects for banks and other big companies. Also I got certifications for the Blueprism tool and C#."));
-    }
+    $(document).click(function(loc){
+      logClicks(loc.pageX,loc.pageY);
+    });
+
+    $('#main').append(internationalizeButton);
+
+    $("#mapDiv").append(googleMap);
+
+    displayWork();
+    displayProjects();
+
+
 
 
   </script>
+  <script src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyChaxQBVNPTFWEX-4UM2fYdf04xUtA_kRI"></script>
 </body>
 </html>
